@@ -1,11 +1,11 @@
 const express = require('express');
 const server = express();
-/* const MoviesRouter = require('./routes/movies'); */
+const moviesRouter = require('./routes/movies');
 /* const NotFound = require('./middlewares/NotFound') */
 /* const ServerErrorsHandler = require('./middlewares/ServerErrorsHandler') */
 
 const HOST = process.env.HOST || 'http://localhost';
-const PORT = process.env.PORT || '3001';
+const PORT = process.env.PORT || '3000';
 
 server.listen(PORT, () => {
     console.log(`Server is listening on port ${HOST}:${PORT}`);
@@ -17,7 +17,7 @@ server.get('/', (req, res) => {
 })
 
 //movies routes 
-/* server.use('/api/movies', MoviessRouter); */
+server.use('/movies', moviesRouter);
 
 
 //middleware: handle 404 errors with a catch all route

@@ -1,6 +1,6 @@
 const connection = require("../database/connection");
 
-//index callback
+//INDEX
 function index(req, res) {
     connection.query(`SELECT * FROM movies`, (err, results) => {
         if (err) return res.status(500).json({ err: err })
@@ -12,7 +12,7 @@ function index(req, res) {
     })
 }
 
-//show callback
+//SHOW
 function show(req, res) {
 
     const id = req.params.id

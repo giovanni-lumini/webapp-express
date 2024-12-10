@@ -33,7 +33,7 @@ function show(req, res) {
             //console.log(reviewsResults);
 
             const movieReviews = {
-                ...results[0],
+                ...movieResults[0],
                 reviews: reviewsResults
             }
 

@@ -42,7 +42,26 @@ function show(req, res) {
     })
 }
 
+//POST-REVIEW
+function postReview(req, res) {
+    const movie_id = Number(req.params.id)
+    const { name, vote, text } = req.body
+    const now = new Date()
+    console.log(now);
+    const created_at = `${now.getFullYear()}-${now.getMonth()}-${now.getDay()}`
+    console.log(created_at);
+
+    //sql query
+    const sql = "INSERT INTO `reviews` SET movie_id=?, name=?, vote=?, created_at=?, text=?"
+
+    connection.query(sql, [movie_id, name, vote, created_at, text], (err, result) => {
+        if (err) return res.status(500).json({ error: err })
+        return res.status(201).json({ success: true })
+    })
+}
+
 module.exports = {
     index,
-    show
+    show,
+    postReview
 }
